@@ -13,10 +13,10 @@ router.get('/practice', function(req,res)
 **************************************** */
 router.post('/create', validateSession, (req, res) => {
     const dietlogEntry = {
-        foodItem: req.body.user.foodItem,
+        food_item: req.body.user.food_item,
         calories: req.body.user.calories,
-        dateEaten: req.body.user.dateEaten,
-        whereEaten: req.body.user.whereEaten,
+        date_eaten: req.body.user.date_eaten,
+        where_eaten: req.body.user.where_eaten,
         feelings: req.body.user.feelings,
         image: req.body.user.image,
         owner: req.user.id
