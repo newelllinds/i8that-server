@@ -6,8 +6,8 @@ let dietlog = require('./controllers/dietlogcontroller');
 let user = require('./controllers/usercontroller');
 
 sequelize.sync();
-
 app.use(require('./middleware/headers'));
+app.use(express.json());
 
 app.use('/user', user);
 app.use('/dietlog', dietlog)
