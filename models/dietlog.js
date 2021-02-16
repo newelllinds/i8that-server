@@ -21,6 +21,9 @@ module.exports = function (sequelize, DataTypes){
       image: {
         type: DataTypes.STRING
       },
+      owner: {
+        type: DataTypes.INTEGER
+      }
     });
     return Dietlog;
   };

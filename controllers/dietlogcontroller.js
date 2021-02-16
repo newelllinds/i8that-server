@@ -42,10 +42,14 @@ router.delete("/delete/:id", validateSession, function (req, res) {
 /* ***************************************
     *** get log entries by user id ***
 **************************************** */
+<<<<<<< HEAD
 router.get("/mylogs",(req, res) => {
+=======
+router.get("/mylogs", validateSession, (req, res) => {
+>>>>>>> 10d82e22d2983791de1edf1659dccd466c919c20
     let id = req.user.id
     Dietlog.findAll({
-        where: { id: id }
+        where: { owner: id }
     })
         .then(logs => res.status(200).json(logs))
         .catch(err => res.status(500).json({ error: err }))
@@ -54,10 +58,10 @@ router.get("/mylogs",(req, res) => {
 /* ***************************************
     *** get log entries by date ***
 **************************************** */
-router.get("/date", (req, res) => {
-    let date = req.params.date
+router.get("/:date_eaten", validateSession, (req, res) => {
+    let date = req.params.date_eaten;
     Dietlog.findAll({
-        where: { date: date }
+        where: { date_eaten: date }
     })
         .then(logs => res.status(200).json(logs))
         .catch(err => res.status(500).json({ error: err }))
@@ -66,7 +70,7 @@ router.get("/date", (req, res) => {
 /* ***************************************
             *** update log ***
 **************************************** */
-router.put("/:id", function (req, res) {
+router.put("/update/:id", validateSession, function (req, res) {
     const updateDietlogEntry = {
       food_item: req.body.user.food_item,
         calories: req.body.user.calories,
@@ -74,10 +78,9 @@ router.put("/:id", function (req, res) {
         where_eaten: req.body.user.where_eaten,
         feelings: req.body.user.feelings,
         image: req.body.user.image,
-        owner: req.user.id
 };
 
-    const query = { where: { id: req.params.id, owner_id: req.user.id } };
+    const query = { where: { id: req.params.id, owner: req.user.id } };
 
     Dietlog.update(updateDietlogEntry, query)
         .then((logs) => res.status(200).json(logs))
