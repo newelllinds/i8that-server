@@ -42,11 +42,9 @@ router.delete("/delete/:id", validateSession, function (req, res) {
 /* ***************************************
     *** get log entries by user id ***
 **************************************** */
-<<<<<<< HEAD
+
 router.get("/mylogs",(req, res) => {
-=======
-router.get("/mylogs", validateSession, (req, res) => {
->>>>>>> 10d82e22d2983791de1edf1659dccd466c919c20
+
     let id = req.user.id
     Dietlog.findAll({
         where: { owner: id }
