@@ -9,8 +9,6 @@ router.get('/practice', function(req,res)
     res.send('Hey! This is a practice route!')
 })
 
-
-
 /* ***************************************
     *** DIET LOG CREATE ***
 **************************************** */
@@ -44,8 +42,8 @@ router.delete("/delete/:id", validateSession, function (req, res) {
 /* ***************************************
     *** get log entries by user id ***
 **************************************** */
-router.get("/:id",(req, res) => {
-    let id = req.params.id
+router.get("/mylogs",(req, res) => {
+    let id = req.user.id
     Dietlog.findAll({
         where: { id: id }
     })
