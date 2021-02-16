@@ -44,7 +44,7 @@ router.delete("/delete/:id", validateSession, function (req, res) {
 /* ***************************************
     *** get log entries by user id ***
 **************************************** */
-router.get("/mylogs", validateSession, (req, res) => {
+router.get("/mylogs/:id", validateSession, (req, res) => {
     let id = req.user.id
     Dietlog.findAll({
         where: { owner: id }
@@ -56,10 +56,11 @@ router.get("/mylogs", validateSession, (req, res) => {
 /* ***************************************
     *** get log entries by date ***
 **************************************** */
-router.get("/:date_eaten", validateSession, (req, res) => {
+router.get("/:date_eaten/:id", validateSession, (req, res) => {
     let date = req.params.date_eaten;
+    let id = req.user.id
     Dietlog.findAll({
-        where: { date_eaten: date }
+        where: { date_eaten: date, owner: id }
     })
         .then(logs => res.status(200).json(logs))
         .catch(err => res.status(500).json({ error: err }))
