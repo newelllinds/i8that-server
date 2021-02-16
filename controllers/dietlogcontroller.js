@@ -14,12 +14,12 @@ router.get('/practice', function(req,res)
 **************************************** */
 router.post('/create', validateSession, (req, res) => {
     const dietlogEntry = {
-        food_item: req.body.user.food_item,
-        calories: req.body.user.calories,
-        date_eaten: req.body.user.date_eaten,
-        where_eaten: req.body.user.where_eaten,
-        feelings: req.body.user.feelings,
-        image: req.body.user.image,
+        food_item: req.body.dietlog.food_item,
+        calories: req.body.dietlog.calories,
+        date_eaten: req.body.dietlog.date_eaten,
+        where_eaten: req.body.dietlog.where_eaten,
+        feelings: req.body.dietlog.feelings,
+        image: req.body.dietlog.image,
         owner: req.user.id
 }
     Dietlog.create(dietlogEntry)
@@ -70,12 +70,12 @@ router.get("/:date_eaten", validateSession, (req, res) => {
 **************************************** */
 router.put("/update/:id", validateSession, function (req, res) {
     const updateDietlogEntry = {
-      food_item: req.body.user.food_item,
-        calories: req.body.user.calories,
-        date_eaten: req.body.user.date_eaten,
-        where_eaten: req.body.user.where_eaten,
-        feelings: req.body.user.feelings,
-        image: req.body.user.image,
+      food_item: req.body.dietlog.food_item,
+        calories: req.body.dietlog.calories,
+        date_eaten: req.body.dietlog.date_eaten,
+        where_eaten: req.body.dietlog.where_eaten,
+        feelings: req.body.dietlog.feelings,
+        image: req.body.dietlog.image,
 };
 
     const query = { where: { id: req.params.id, owner: req.user.id } };

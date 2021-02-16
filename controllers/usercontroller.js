@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 router.post("/create", function (req, res) {
   User.create({
     username: req.body.user.username,
-    password: bcrypt.hashSync(req.body.user.password, 13),
+    password: bcrypt.hashSync(req.body.user.password, 13)
   })
     .then(
       function createSuccess(user) {
@@ -22,7 +22,9 @@ router.post("/create", function (req, res) {
           sessionToken: token,
         });
       }
+      // res.send("This is our user/create endpoint!")
     )
+
     .catch((err) => res.status(500).json({ error: err }));
 });
 
