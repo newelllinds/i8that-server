@@ -44,7 +44,7 @@ router.delete("/delete/:id", validateSession, function (req, res) {
 /* ***************************************
     *** get all logs for individual user ***
 **************************************** */
-router.get("/mylogs", validateSession, (req, res) => {
+router.get("/mylogs/:id", validateSession, (req, res) => {
     let id = req.user.id
     Dietlog.findAll({
         where: { owner: id }
@@ -88,3 +88,4 @@ router.put("/update/:id", validateSession, function (req, res) {
 
 
 module.exports = router;
+
