@@ -7,17 +7,6 @@ let dietlog = require('./controllers/dietlogcontroller');
 let user = require('./controllers/usercontroller');
 
 sequelize.sync();
-<<<<<<< HEAD
-app.use(require('./middleware/headers'));
-app.use(express.json());
-
-app.use("/user", user);
-app.use("/dietlog", dietlog);
-
-app.listen(3000, function () {
-  console.log("App is listening on port 3000");
-});
-=======
 app.use(express.json())
 app.use(require('./middleware/headers'));
 app.use('/user', user);
@@ -27,4 +16,3 @@ app.use('/dietlog', dietlog)
 app.listen(3000, function(){
     console.log("App is listening on port 3000")
 })
->>>>>>> 09ad5407f1d2a189cbedf3995837def096b9e613
